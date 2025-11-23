@@ -10,6 +10,11 @@ const contactForm = document.querySelector('[data-contact-form]');
 const formStatus = document.getElementById('form-status');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const themeToggleButtons = document.querySelectorAll('[data-theme-toggle]');
+const heroLogo = document.querySelector('[data-hero-logo]');
+const HERO_LOGOS = {
+  light: 'images/foreveryoungfitness-logo-2-black.svg',
+  dark: 'images/foreveryoungfitness-logo-2-white.svg',
+};
 const rootElement = document.documentElement;
 const THEME_STORAGE_KEY = 'fy-theme';
 const DEFAULT_THEME = 'light';
@@ -44,6 +49,9 @@ function setTheme(theme, { persist = true } = {}) {
   currentTheme = nextTheme;
   rootElement.setAttribute('data-theme', nextTheme);
   updateThemeToggleUI(nextTheme);
+  if (heroLogo) {
+    heroLogo.src = HERO_LOGOS[nextTheme];
+  }
   if (!persist) {
     return;
   }

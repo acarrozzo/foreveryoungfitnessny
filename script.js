@@ -17,7 +17,7 @@ const HERO_LOGOS = {
 };
 const rootElement = document.documentElement;
 const THEME_STORAGE_KEY = 'fy-theme';
-const DEFAULT_THEME = 'light';
+const DEFAULT_THEME = 'dark';
 
 function getStoredTheme() {
   try {

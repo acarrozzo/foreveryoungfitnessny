@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -38,17 +38,226 @@
       };
     </script>
     <style>
+      :root {
+        color-scheme: light;
+        --color-brand-accent: #22c55e;
+        --surface-body: #f8fafc;
+        --surface-strong: #ffffff;
+        --surface-strong-95: rgba(255, 255, 255, 0.95);
+        --surface-strong-80: rgba(255, 255, 255, 0.9);
+        --surface-strong-70: rgba(255, 255, 255, 0.75);
+        --surface-strong-60: rgba(255, 255, 255, 0.65);
+        --surface-strong-50: rgba(255, 255, 255, 0.55);
+        --surface-muted-70: rgba(226, 232, 240, 0.85);
+        --surface-muted-60: rgba(226, 232, 240, 0.75);
+        --surface-muted-50: rgba(226, 232, 240, 0.65);
+        --text-strong: #0f172a;
+        --text-regular: #1e293b;
+        --text-muted: #334155;
+        --text-subtle: #475569;
+        --text-tertiary: #64748b;
+        --text-on-accent: #052e16;
+        --border-strong: #d0d7e5;
+        --border-medium: #c8d0df;
+        --border-light: #a0aec0;
+        --nav-background: rgba(255, 255, 255, 0.92);
+        --nav-border: rgba(148, 163, 184, 0.35);
+        --hero-gradient: linear-gradient(to bottom, #ffffff, #f1f5f9, #e2e8f0);
+        --hero-radial: radial-gradient(circle at top, rgba(34, 197, 94, 0.2), transparent 45%),
+          radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.15), transparent 35%);
+        --contact-gradient: linear-gradient(to bottom, #ffffff, #f1f5f9, #e2e8f0);
+        --input-bg: #ffffff;
+        --input-text: #0f172a;
+        --input-placeholder: #94a3b8;
+      }
+      [data-theme='dark'] {
+        color-scheme: dark;
+        --surface-body: #020617;
+        --surface-strong: #020617;
+        --surface-strong-95: rgba(2, 6, 23, 0.95);
+        --surface-strong-80: rgba(2, 6, 23, 0.85);
+        --surface-strong-70: rgba(2, 6, 23, 0.7);
+        --surface-strong-60: rgba(2, 6, 23, 0.6);
+        --surface-strong-50: rgba(2, 6, 23, 0.5);
+        --surface-muted-70: rgba(15, 23, 42, 0.8);
+        --surface-muted-60: rgba(15, 23, 42, 0.7);
+        --surface-muted-50: rgba(15, 23, 42, 0.6);
+        --text-strong: #f8fafc;
+        --text-regular: #e2e8f0;
+        --text-muted: #cbd5f5;
+        --text-subtle: #94a3b8;
+        --text-tertiary: #7c8ba3;
+        --text-on-accent: #052e16;
+        --border-strong: rgba(148, 163, 184, 0.45);
+        --border-medium: rgba(148, 163, 184, 0.3);
+        --border-light: rgba(148, 163, 184, 0.25);
+        --nav-background: rgba(2, 6, 23, 0.85);
+        --nav-border: rgba(51, 65, 85, 0.65);
+        --hero-gradient: linear-gradient(to bottom, #0f172a, #020617, #000000);
+        --hero-radial: radial-gradient(circle at top, rgba(34, 197, 94, 0.2), transparent 45%),
+          radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.15), transparent 35%);
+        --contact-gradient: linear-gradient(to bottom, #020617, #0f172a, #020617);
+        --input-bg: rgba(15, 23, 42, 0.85);
+        --input-text: #f8fafc;
+        --input-placeholder: #94a3b8;
+      }
       html {
         scroll-behavior: smooth;
+        background-color: var(--surface-body);
       }
       body {
         font-family: 'Inter', system-ui, sans-serif;
-        background-color: #020617;
-        color: #f8fafc;
+        background-color: var(--surface-body);
+        color: var(--text-regular);
+        transition: background-color 0.4s ease, color 0.4s ease;
+      }
+      header[data-nav] {
+        background-color: var(--nav-background) !important;
+        border-bottom-color: var(--nav-border) !important;
+        transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
       }
       .font-heading {
         font-family: 'Oswald', 'Arial Black', sans-serif;
         letter-spacing: 0.025em;
+      }
+      .nav-link {
+        color: var(--text-muted);
+        transition: color 0.3s ease;
+      }
+      .nav-link:hover,
+      .nav-link:focus-visible {
+        color: var(--text-strong);
+      }
+      .text-brand-accent {
+        color: var(--color-brand-accent) !important;
+      }
+      .bg-brand-accent {
+        background-color: var(--color-brand-accent) !important;
+      }
+      .bg-brand-accent\/10 {
+        background-color: rgba(34, 197, 94, 0.1) !important;
+      }
+      .text-white,
+      .text-slate-100 {
+        color: var(--text-strong) !important;
+      }
+      .text-slate-200 {
+        color: var(--text-regular) !important;
+      }
+      .text-slate-300 {
+        color: var(--text-muted) !important;
+      }
+      .text-slate-400 {
+        color: var(--text-subtle) !important;
+      }
+      .text-slate-500 {
+        color: var(--text-tertiary) !important;
+      }
+      .text-slate-900 {
+        color: var(--text-on-accent) !important;
+      }
+      .hover\:text-white:hover {
+        color: var(--text-strong) !important;
+      }
+      .bg-slate-950 {
+        background-color: var(--surface-strong) !important;
+      }
+      .bg-slate-950\/95 {
+        background-color: var(--surface-strong-95) !important;
+      }
+      .bg-slate-950\/80 {
+        background-color: var(--surface-strong-80) !important;
+      }
+      .bg-slate-950\/70 {
+        background-color: var(--surface-strong-70) !important;
+      }
+      .bg-slate-950\/60 {
+        background-color: var(--surface-strong-60) !important;
+      }
+      .bg-slate-950\/50 {
+        background-color: var(--surface-strong-50) !important;
+      }
+      .bg-slate-900\/70 {
+        background-color: var(--input-bg) !important;
+      }
+      .bg-slate-900\/60 {
+        background-color: var(--surface-muted-60) !important;
+      }
+      .bg-slate-900\/50 {
+        background-color: var(--surface-muted-50) !important;
+      }
+      .border-slate-800 {
+        border-color: var(--border-strong) !important;
+      }
+      .border-slate-700 {
+        border-color: var(--border-medium) !important;
+      }
+      .border-slate-600 {
+        border-color: var(--border-light) !important;
+      }
+      .placeholder-slate-500::placeholder {
+        color: var(--input-placeholder);
+      }
+      input.text-white,
+      textarea.text-white {
+        color: var(--input-text) !important;
+      }
+      .hero-gradient {
+        background-image: var(--hero-gradient);
+      }
+      .hero-radial {
+        background-image: var(--hero-radial);
+        opacity: 0.3;
+      }
+      [data-theme='dark'] .hero-radial {
+        opacity: 0.35;
+      }
+      .contact-gradient {
+        background-image: var(--contact-gradient);
+      }
+      .theme-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border: 1px solid var(--border-medium);
+        border-radius: 9999px;
+        background-color: transparent;
+        color: var(--text-regular);
+        height: 2.75rem;
+        padding: 0 0.85rem;
+        transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      }
+      .theme-toggle--icon {
+        width: 2.75rem;
+        padding: 0;
+      }
+      .theme-toggle--pill {
+        width: 100%;
+        justify-content: center;
+        font-size: 0.75rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      .theme-toggle:hover {
+        background-color: var(--surface-muted-60);
+      }
+      [data-theme='dark'] .theme-toggle:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+      .theme-toggle__icon {
+        width: 1.2rem;
+        height: 1.2rem;
+      }
+      .icon-moon {
+        display: none;
+      }
+      [data-theme='dark'] .icon-sun {
+        display: none;
+      }
+      [data-theme='dark'] .icon-moon {
+        display: inline;
       }
       .reveal-hidden {
         opacity: 0;
@@ -60,7 +269,7 @@
         transform: translateY(0);
       }
       .focus-ring:focus-visible {
-        outline: 2px solid #22c55e;
+        outline: 2px solid var(--color-brand-accent);
         outline-offset: 3px;
       }
       .mobile-nav-open {
@@ -84,7 +293,7 @@
     <script defer src="https://unpkg.com/lucide@latest"></script>
     <script defer src="./script.js"></script>
   </head>
-  <body class="min-h-screen bg-slate-950 text-slate-100">
+  <body class="min-h-screen">
     <header
       class="fixed inset-x-0 top-0 z-50 transition bg-slate-950/80 backdrop-blur border-b border-slate-800"
       data-nav
@@ -106,25 +315,37 @@
           <a href="#services" class="focus-ring nav-link text-slate-300 hover:text-white" data-nav-link>Services</a>
           <a href="#contact" class="focus-ring nav-link text-slate-300 hover:text-white" data-nav-link>Contact</a>
         </nav>
-        <button
-          class="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-md border border-slate-700 text-slate-100 md:hidden"
-          aria-label="Toggle navigation menu"
-          aria-controls="mobile-menu"
-          aria-expanded="false"
-          data-mobile-toggle
-        >
-          <span class="sr-only">Open navigation</span>
-          <svg
-            class="h-5 w-5"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="1.5"
+        <div class="flex items-center gap-3">
+          <button
+            type="button"
+            class="focus-ring theme-toggle theme-toggle--icon"
+            data-theme-toggle
+            aria-pressed="false"
+            aria-label="Switch to dark mode"
           >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
-          </svg>
-        </button>
+            <i class="theme-toggle__icon icon-sun" data-lucide="sun" aria-hidden="true"></i>
+            <i class="theme-toggle__icon icon-moon" data-lucide="moon" aria-hidden="true"></i>
+          </button>
+          <button
+            class="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-md border border-slate-700 text-slate-100 md:hidden"
+            aria-label="Toggle navigation menu"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            data-mobile-toggle
+          >
+            <span class="sr-only">Open navigation</span>
+            <svg
+              class="h-5 w-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+        </div>
       </div>
       <div
         id="mobile-menu"
@@ -136,6 +357,17 @@
           <a href="#about" class="focus-ring nav-link text-slate-300 hover:text-white" data-mobile-link>About</a>
           <a href="#services" class="focus-ring nav-link text-slate-300 hover:text-white" data-mobile-link>Services</a>
           <a href="#contact" class="focus-ring nav-link text-slate-300 hover:text-white" data-mobile-link>Contact</a>
+          <button
+            type="button"
+            class="focus-ring theme-toggle theme-toggle--pill md:hidden"
+            data-theme-toggle
+            aria-pressed="false"
+            aria-label="Switch to dark mode"
+          >
+            <i class="theme-toggle__icon icon-sun" data-lucide="sun" aria-hidden="true"></i>
+            <i class="theme-toggle__icon icon-moon" data-lucide="moon" aria-hidden="true"></i>
+            <span data-theme-toggle-label>Light mode</span>
+          </button>
         </div>
       </div>
     </header>
@@ -145,8 +377,8 @@
         id="home"
         class="relative flex min-h-screen items-center justify-center px-6 pt-32 pb-20"
       >
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-black"></div>
-        <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle at top, rgba(34,197,94,0.25), transparent 45%), radial-gradient(circle at 20% 20%, rgba(14,165,233,0.15), transparent 35%);"></div>
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="absolute inset-0 hero-radial"></div>
         <div class="relative z-10 mx-auto flex max-w-4xl flex-col items-center text-center gap-6" data-animate>
           <img
             src="images/foreveryoungfitness-logo-2-white.svg"
@@ -403,7 +635,7 @@
         </div>
       </section>
 
-      <section id="contact" class="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 px-6 py-24" data-animate>
+      <section id="contact" class="contact-gradient px-6 py-24" data-animate>
         <div class="mx-auto max-w-6xl grid gap-12 lg:grid-cols-2">
           <div class="rounded-3xl border border-slate-800 bg-slate-950/70 p-8 shadow-2xl shadow-black/40">
             <p class="text-sm uppercase tracking-[0.5em] text-brand-accent">Book a Consult</p>

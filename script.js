@@ -9,6 +9,59 @@ const animateTargets = document.querySelectorAll('[data-animate]');
 const contactForm = document.querySelector('[data-contact-form]');
 const formStatus = document.getElementById('form-status');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const themeToggleButtons = document.querySelectorAll('[data-theme-toggle]');
+const rootElement = document.documentElement;
+const THEME_STORAGE_KEY = 'fy-theme';
+const DEFAULT_THEME = 'light';
+
+function getStoredTheme() {
+  try {
+    const stored = localStorage.getItem(THEME_STORAGE_KEY);
+    if (stored === 'dark' || stored === 'light') {
+      return stored;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+function updateThemeToggleUI(theme) {
+  const isDark = theme === 'dark';
+  themeToggleButtons.forEach((button) => {
+    button.setAttribute('aria-pressed', String(isDark));
+    button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    button.querySelectorAll('[data-theme-toggle-label]').forEach((label) => {
+      label.textContent = isDark ? 'Dark mode' : 'Light mode';
+    });
+  });
+}
+
+let currentTheme = getStoredTheme() || DEFAULT_THEME;
+
+function setTheme(theme, { persist = true } = {}) {
+  const nextTheme = theme === 'dark' ? 'dark' : 'light';
+  currentTheme = nextTheme;
+  rootElement.setAttribute('data-theme', nextTheme);
+  updateThemeToggleUI(nextTheme);
+  if (!persist) {
+    return;
+  }
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+  } catch {
+    // Ignore storage errors (e.g., private mode)
+  }
+}
+
+setTheme(currentTheme, { persist: false });
+
+themeToggleButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+  });
+});
 
 let menuOpen = false;
 let focusableMenuElements = [];

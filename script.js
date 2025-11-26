@@ -275,10 +275,14 @@ if (contactForm) {
 
     try {
       const formData = new FormData(contactForm);
+      const payload = Object.fromEntries(formData.entries());
       const response = await fetch(contactForm.action, {
         method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: formData,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
       });
 
       if (response.ok) {

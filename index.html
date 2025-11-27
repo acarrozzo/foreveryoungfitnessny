@@ -315,7 +315,6 @@
         border-radius: 1.25rem;
         overflow: hidden;
         border: 1px solid var(--border-medium);
-        box-shadow: 0 15px 35px rgba(15, 23, 42, 0.35);
         scroll-snap-align: center;
         position: relative;
         isolation: isolate;
@@ -597,72 +596,6 @@
               <p class="mt-2 text-slate-300">Habits that support your training.</p>
             </article>
           </div>
-
-          <div class="mt-16 grid gap-6 md:grid-cols-2" data-animate>
-            <div class="overflow-hidden rounded-2xl border border-slate-800 shadow-lg shadow-black/25">
-              <img
-                src="images/forever-young-fitness-wall-1.jpg"
-                alt="Forever Young Fitness gym environment"
-                class="h-full w-full object-cover"
-                width="640"
-                height="480"
-                loading="lazy"
-              />
-            </div>
-            <div class="overflow-hidden rounded-2xl border border-slate-800 shadow-lg shadow-black/25">
-              <img
-                src="images/forever-young-fitness-wall-2.jpg"
-                alt="Training equipment at Forever Young Fitness"
-                class="h-full w-full object-cover"
-                width="640"
-                height="480"
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-          <div class="mt-16 grid gap-8 lg:grid-cols-2 lg:items-center" data-animate>
-            <div class="overflow-hidden rounded-2xl border border-slate-800 shadow-lg shadow-black/25">
-              <img
-                src="images/forever-young-fitness-wall-3.jpg"
-                alt="Credentials display at Forever Young Fitness"
-                class="h-full w-full object-cover"
-                width="640"
-                height="640"
-                loading="lazy"
-              />
-            </div>
-            <div class="space-y-4">
-              <p class="text-sm uppercase tracking-[0.5em] text-brand-accent">ISSA Certifications</p>
-              <h3 class="font-heading text-3xl text-white">Credentials</h3>
-              <ul class="space-y-3 text-slate-200">
-                <li class="flex items-center gap-3">
-                  <i data-lucide="check-circle" class="h-5 w-5 text-brand-accent"></i>
-                  Elite Trainer
-                </li>
-                <li class="flex items-center gap-3">
-                  <i data-lucide="check-circle" class="h-5 w-5 text-brand-accent"></i>
-                  Certified Personal Trainer
-                </li>
-                <li class="flex items-center gap-3">
-                  <i data-lucide="check-circle" class="h-5 w-5 text-brand-accent"></i>
-                  Fitness Coach
-                </li>
-                <li class="flex items-center gap-3">
-                  <i data-lucide="check-circle" class="h-5 w-5 text-brand-accent"></i>
-                  Youth, Senior & Lifespan Coach Certification
-                </li>
-                <li class="flex items-center gap-3">
-                  <i data-lucide="check-circle" class="h-5 w-5 text-brand-accent"></i>
-                  Nutritionist
-                </li>
-                <li class="flex items-center gap-3">
-                  <i data-lucide="check-circle" class="h-5 w-5 text-brand-accent"></i>
-                  Specialist in Exercise Therapy
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -812,6 +745,51 @@
         </div>
       </section>
 
+      <section id="certifications" class="bg-slate-900/50 px-6 py-24" data-animate>
+        <div class="mx-auto max-w-6xl grid gap-8 lg:grid-cols-2 lg:items-center">
+          <div class="overflow-hidden rounded-2xl border border-slate-800 shadow-lg shadow-black/25">
+            <img
+              src="images/forever-young-fitness-wall-3.jpg"
+              alt="Credentials display at Forever Young Fitness"
+              class="h-full w-full object-cover"
+              width="640"
+              height="640"
+              loading="lazy"
+            />
+          </div>
+          <div class="space-y-4">
+            <p class="text-sm uppercase tracking-[0.5em] text-brand-accent">ISSA Certifications</p>
+            <h3 class="font-heading text-3xl text-white">Credentials</h3>
+            <ul class="space-y-3 text-slate-200">
+              <li class="flex items-center gap-3">
+                <i data-lucide="check-circle" class="h-5 w-5 text-brand-accent"></i>
+                Elite Trainer
+              </li>
+              <li class="flex items-center gap-3">
+                <i data-lucide="check-circle" class="h-5 w-5 text-brand-accent"></i>
+                Certified Personal Trainer
+              </li>
+              <li class="flex items-center gap-3">
+                <i data-lucide="check-circle" class="h-5 w-5 text-brand-accent"></i>
+                Fitness Coach
+              </li>
+              <li class="flex items-center gap-3">
+                <i data-lucide="check-circle" class="h-5 w-5 text-brand-accent"></i>
+                Youth, Senior & Lifespan Coach Certification
+              </li>
+              <li class="flex items-center gap-3">
+                <i data-lucide="check-circle" class="h-5 w-5 text-brand-accent"></i>
+                Nutritionist
+              </li>
+              <li class="flex items-center gap-3">
+                <i data-lucide="check-circle" class="h-5 w-5 text-brand-accent"></i>
+                Specialist in Exercise Therapy
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section id="faq" class="px-6 py-24" data-animate>
         <div class="mx-auto max-w-4xl">
           <div class="text-center">
@@ -885,7 +863,7 @@
           <div class="rounded-2xl border border-slate-800 bg-slate-950/70 p-8 shadow-lg shadow-black/25">
             <p class="text-sm uppercase tracking-[0.5em] text-brand-accent">Book a Consult</p>
             <h2 class="font-heading text-3xl text-white sm:text-4xl">Contact Tony</h2>
-            <p class="mt-4 text-slate-300">Use the form to connect—Tony replies within one business day.</p>
+            <p class="mt-4 text-slate-300">Use the form to connect</p>
             <form
               id="contact-form"
               class="mt-8 space-y-4"
@@ -923,7 +901,7 @@
                   name="phone"
                   type="tel"
                   class="focus-ring mt-1 w-full rounded-xl border border-slate-800 bg-slate-900/70 px-4 py-3 text-base text-white placeholder-slate-500"
-                  placeholder="(631) 555-0123"
+                  placeholder="(631) 555-1234"
                 />
               </div>
               <div>
@@ -956,36 +934,13 @@
               </li>
               <li class="flex items-center gap-4">
                 <i data-lucide="phone" class="h-5 w-5 text-brand-accent"></i>
-                <a href="tel:16315550123" class="hover:text-brand-accent focus-ring">(631) 555-0123</a>
+                <a href="tel:16315550123" class="hover:text-brand-accent focus-ring">(631) 889-0892</a>
               </li>
               <li class="flex items-center gap-4">
                 <i data-lucide="map-pin" class="h-5 w-5 text-brand-accent"></i>
                 Hauppauge, NY • Serving Long Island & NY
               </li>
             </ul>
-            <div class="mt-8">
-              <p class="text-sm uppercase tracking-[0.3em] text-slate-500">Follow</p>
-              <div class="mt-4 flex gap-4">
-                <a
-                  href="https://instagram.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  class="focus-ring inline-flex h-12 w-12 items-center justify-center rounded-xl border border-slate-800 text-white transition hover:border-brand-accent hover:text-brand-accent"
-                  aria-label="Instagram"
-                >
-                  <i data-lucide="instagram" class="h-5 w-5"></i>
-                </a>
-                <a
-                  href="https://facebook.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  class="focus-ring inline-flex h-12 w-12 items-center justify-center rounded-xl border border-slate-800 text-white transition hover:border-brand-accent hover:text-brand-accent"
-                  aria-label="Facebook"
-                >
-                  <i data-lucide="facebook" class="h-5 w-5"></i>
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </section>

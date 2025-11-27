@@ -11,6 +11,10 @@ const formStatus = document.getElementById('form-status');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const themeToggleButtons = document.querySelectorAll('[data-theme-toggle]');
 const heroLogo = document.querySelector('[data-hero-logo]');
+const equipmentGallery = document.querySelector('[data-equipment-gallery]');
+const equipmentTrack = equipmentGallery?.querySelector('[data-equipment-track]');
+const equipmentPrevButton = equipmentGallery?.querySelector('[data-equipment-prev]');
+const equipmentNextButton = equipmentGallery?.querySelector('[data-equipment-next]');
 const HERO_LOGOS = {
   light: 'images/foreveryoungfitness-logo-2-black.svg',
   dark: 'images/foreveryoungfitness-logo-2-white.svg',
@@ -303,3 +307,69 @@ const yearEl = document.getElementById('current-year');
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
+
+function updateEquipmentNavState() {
+  if (!equipmentTrack || !equipmentPrevButton || !equipmentNextButton) return;
+  const maxScrollLeft = equipmentTrack.scrollWidth - equipmentTrack.clientWidth - 1;
+  equipmentPrevButton.disabled = equipmentTrack.scrollLeft <= 0;
+  equipmentNextButton.disabled = equipmentTrack.scrollLeft >= maxScrollLeft;
+}
+
+function getEquipmentScrollAmount() {
+  if (!equipmentTrack) return 0;
+  const firstItem = equipmentTrack.querySelector('.equipment-item');
+  const itemWidth = firstItem?.getBoundingClientRect().width ?? equipmentTrack.clientWidth;
+  const styles = window.getComputedStyle(equipmentTrack);
+  const gapValue =
+    parseFloat(styles.columnGap || styles.gap || '0') || 0;
+  return itemWidth + gapValue;
+}
+
+function scrollEquipmentGallery(direction) {
+  if (!equipmentTrack) return;
+  const distance = getEquipmentScrollAmount() || equipmentTrack.clientWidth;
+  equipmentTrack.scrollBy({
+    left: distance * direction,
+    behavior: 'smooth',
+  });
+}
+
+function initEquipmentGallery() {
+  if (!equipmentTrack) return;
+  let scrollFrame = null;
+
+  equipmentPrevButton?.addEventListener('click', () => {
+    scrollEquipmentGallery(-1);
+  });
+  equipmentNextButton?.addEventListener('click', () => {
+    scrollEquipmentGallery(1);
+  });
+
+  equipmentTrack.addEventListener('scroll', () => {
+    if (scrollFrame) return;
+    scrollFrame = requestAnimationFrame(() => {
+      updateEquipmentNavState();
+      scrollFrame = null;
+    });
+  });
+
+  window.addEventListener('resize', updateEquipmentNavState, { passive: true });
+
+  updateEquipmentNavState();
+}
+
+function initEquipmentLightbox() {
+  if (typeof window.GLightbox !== 'function') return;
+  window.GLightbox({
+    selector: '.equipment-item',
+    touchNavigation: true,
+    loop: true,
+    zoomable: true,
+    draggable: true,
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initEquipmentGallery();
+  initEquipmentLightbox();
+});

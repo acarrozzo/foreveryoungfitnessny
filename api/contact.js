@@ -38,7 +38,7 @@ async function sendEmail(payload) {
 
   return transporter.sendMail({
     from: user,
-    to: ['archimedesgameco@gmail.com', 'foreveryoungfitny@gmail.com'],
+    to: 'foreveryoungfitny@gmail.com',
     replyTo: email,
     subject: `New contact from ${name}`,
     text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\n\n${message}`,
